@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cfg-clase
+  namespace: dev
+  labels:
+    app: cfg-clase
+data:
+  PUERTO: "8080"
+  DATABASE_URL: "jdbc:mysql://mysql:3306/clase"
+  D1ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
+  D2ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
+  D3ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
+  URL: http://var.com
+
+

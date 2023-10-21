@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: clase
+  name: clase
+  namespace: dev
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: clase
+  template: 
+    metadata: 
+      labels: 
+        app: clase
+    spec: 
+      containers: 
+        - image: mauron/clasek8s:latest
+          imagePullPolicy: Always
+          name: clase
+          envFrom:
+          - configMapRef:
+              name: cfg-clase
+          - secretRef:
+              name: sec-clase
+          ports: 
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "40Mi"
+            limits:
+              cpu: "100m"
+              memory: "512Mi" 
+          
+      restartPolicy: Always
+  

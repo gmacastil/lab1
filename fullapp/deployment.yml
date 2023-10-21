@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: NAME
+  name: NAME
+  namespace: NS
+spec: 
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector: 
+    matchLabels: 
+      app: NAME
+  template: 
+    metadata: 
+      labels: 
+        app: NAME
+    spec: 
+      containers: 
+        - image: REGISTRY/IMG:latest
+          imagePullPolicy: IfNotPresent
+          name: NAME
+          envFrom:
+          - configMapRef:
+              name: cfg-NAME
+          - secretRef:
+              name: sec-NAME
+          ports: 
+            - containerPort: 8080
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 3
+            initialDelaySeconds: 35
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 3
+            initialDelaySeconds: 31
+          resources:
+            requests:
+              cpu: 250m
+              mem: 256Mi
+            limits:
+              cpu: 900m
+              mem: 512Mi
+      restartPolicy: Always
+  

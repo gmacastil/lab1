@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nginx
+  namespace: dev
+spec:
+  volumes:
+    - name: pvc-clase
+      persistentVolumeClaim:
+        claimName: pvc-clase
+  containers:
+    - name: pod-nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: pvc-clase
