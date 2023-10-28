@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: clase
+  name: clase
+  namespace: dev
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: clase
+  template: 
+    metadata: 
+      labels: 
+        app: clase
+    spec: 
+      containers: 
+        - image: mauron/clasek8s:latest
+          imagePullPolicy: Always
+          name: clase
+          ports: 
+            - containerPort: 80
+      restartPolicy: Always
