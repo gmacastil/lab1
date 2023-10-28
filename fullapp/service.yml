@@ -10,7 +10,7 @@ spec:
     - port: 8080
       name: http
       protocol: TCP
-      targetPort: 8080
+      targetPort: 9090
   selector:
     app: clase
-  type: ClusterIP
+  type: LoadBalancer
