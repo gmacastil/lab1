@@ -16,7 +16,10 @@ spec:
         app: clase
     spec: 
       containers: 
-        - image: mauron/clasek8s:latest
+        - image: k8scursolite.azurecr.io/micro-docker:1.3
+          env:
+            - name: TRM
+              value: "4500"
           imagePullPolicy: Always
           name: clase
           ports: 
