@@ -2,37 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   labels: 
-    app: clase
-  name: clase
-  namespace: dev
+    app: micro-docker
+  name: micro-docker
+  namespace: sabado
 spec: 
   replicas: 1
   selector: 
     matchLabels: 
-      app: clase
+      app: micro-docker
   template: 
     metadata: 
       labels: 
-        app: clase
+        app: micro-docker
     spec: 
       containers: 
-        - image: mauron/clasek8s:latest
-          imagePullPolicy: Always
-          name: clase
-          envFrom:
-          - configMapRef:
-              name: cfg-clase
-          - secretRef:
-              name: sec-clase
+        - image: mauron/micro-docker:1.0
+          envfrom: 
+            - configMapRef: 
+                name: cfg-clase
+          imagePullPolicy: IfNotPresent
+          name: micro-docker
           ports: 
             - containerPort: 80
-          resources:
-            requests:
-              cpu: "1m"
-              memory: "40Mi"
-            limits:
-              cpu: "100m"
-              memory: "512Mi" 
-          
+
       restartPolicy: Always
   
