@@ -16,7 +16,7 @@ spec:
         app: clase2
     spec: 
       containers: 
-        - image: k8scursolite.azurecr.io/micro-docker:1.2
+        - image: k8scursolite.azurecr.io/micro-docker:1.3
           envFrom:
             - configMapRef:
                 name: cfg-clase
