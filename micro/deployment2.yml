@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: clase2
+  name: clase2
+  namespace: dev
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: clase2
+  template: 
+    metadata: 
+      labels: 
+        app: clase2
+    spec: 
+      containers: 
+        - image: k8scursolite.azurecr.io/micro-docker:1.2
+          envFrom:
+            - configMapRef:
+                name: cfg-clase
+            - secretRef:
+                name: sec-clase
+          imagePullPolicy: Always
+          name: clase2
+          ports: 
+            - containerPort: 9090
+      restartPolicy: Always
+
+  
