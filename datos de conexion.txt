@@ -6,4 +6,17 @@ az login --service-principal -u 0ed1eddb-257c-4e32-af92-08ebefc51e8f --password 
 
 az account set --subscription 48d7e2a6-d141-4a7e-91ee-fc4afcef19ec
 
+az aks install-cli
+
 az aks get-credentials --resource-group curso --name akslite
+
+kubectl get nodes
+
+kubectl config set-context --current --namespace=dev
+
+kubectl describe pod NOMBREPOD
+
+kubectl describe pod NOMBREPOD -n NAMESPACE
+
+kubectl scale --replicas=1 deployment/clase
+
