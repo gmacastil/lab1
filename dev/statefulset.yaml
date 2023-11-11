@@ -1,27 +1,30 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata: 
   labels: 
-    app: clase
-  name: clase
+    app: st-clase
+  name: st-clase
   namespace: dev
 spec: 
   replicas: 1
+  serviceName: st-clase
   selector: 
     matchLabels: 
-      app: clase
+      app: st-clase
   template: 
     metadata: 
       labels: 
-        app: clase
+        app: st-clase
     spec: 
       containers: 
         - image: k8scursolite.azurecr.io/micro-docker:1.3
-          env:
-            - name: TRM
-              value: "4500"
+          envFrom: 
+            - configMapRef: 
+                name: cfg-clase
+            - secretRef: 
+                name: sec-clase
           imagePullPolicy: Always
-          name: clase
+          name: st-clase
           ports: 
             - containerPort: 8080
       restartPolicy: Always

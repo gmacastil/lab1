@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: CronJob
+metadata: 
+  labels: 
+    app: NAME
+  name: NAME
+  namespace: NS
+spec: 
+  schedule: "* * * * *"
+  jobTemplate: 
+      spec: 
+         template:
+            spec:
+              containers: 
+                - image: REGISTRY/IMG:latest
+                  imagePullPolicy: IfNotPresent
+                  name: NAME
+                  envFrom:
+                  - configMapRef:
+                      name: cfg-NAME
+                  - secretRef:
+                      name: sec-NAME
+                  resources:
+                    requests:
+                      cpu: 250m
+                      mem: 256Mi
+                    limits:
+                      cpu: 900m
+                      mem: 512Mi
+              restartPolicy: OnFailure
