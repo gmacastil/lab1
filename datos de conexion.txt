@@ -1,0 +1,9 @@
+clientid: 0ed1eddb-257c-4e32-af92-08ebefc51e8f
+tenantid: f87e749f-569f-41a2-93e9-b8058f9fbadd
+passwd: -tg8Q~62qmEtRg_qXi5CDhJlANnguf5tWdtdSbIe
+
+az login --service-principal -u 0ed1eddb-257c-4e32-af92-08ebefc51e8f --password '-tg8Q~62qmEtRg_qXi5CDhJlANnguf5tWdtdSbIe' --tenant f87e749f-569f-41a2-93e9-b8058f9fbadd
+
+az account set --subscription 48d7e2a6-d141-4a7e-91ee-fc4afcef19ec
+
+az aks get-credentials --resource-group curso --name akslite
