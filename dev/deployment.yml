@@ -33,7 +33,7 @@ spec:
               path: /actuator/health
               port: 8080
             periodSeconds: 3
-            initialDelaySeconds: 35
+            initialDelaySeconds: 40
           readinessProbe:
             failureThreshold: 3
             httpGet:

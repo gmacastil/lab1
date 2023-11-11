@@ -7,11 +7,9 @@ metadata:
     app: cfg-clase
 data:
   PUERTO: "8080"
-  DATABASE_URL: "jdbc:mysql://mysql:3306/clase"
-  D1ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
-  D2ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
-  D3ATABASE_URL: "jdbc:mysql://mysql:3306/clase"
-  URL: http://var.com
+  DATABASE_URL: "jdbc:mysql://10.123.0.34:3306/clase"
+  D1ATABASE_USER: "mauricio"
+  D2ATABASE_PASS: "dfasdfadsf"
   TRM: "4005"
 
 
